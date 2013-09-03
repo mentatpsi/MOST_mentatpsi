@@ -1,3 +1,4 @@
+
 package edu.rutgers.MOST.presentation;
 
 import java.awt.Color;
@@ -45,9 +46,6 @@ public class GurobiPathInterface  extends JDialog {
 		this.path = path;
 	}
 
-	public String getGEnv() {
-		return System.getenv("GUROBI_HOME");
-	}
 	public String getPath() {
 		return path;
 	}
@@ -61,9 +59,7 @@ public class GurobiPathInterface  extends JDialog {
 
 		getRootPane().setDefaultButton(okButton);
 		
-		String gPath = this.getGEnv();
-		System.out.println(gPath);
-		textField.setText(gPath);
+		//textField.setText("");
 
 	    fileSelected = false;
 		
@@ -237,7 +233,6 @@ public class GurobiPathInterface  extends JDialog {
 		}
 	}
 }
-
 
 
 

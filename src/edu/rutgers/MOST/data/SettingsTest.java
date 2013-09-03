@@ -1,5 +1,7 @@
 package edu.rutgers.MOST.data;
 
+import java.util.ArrayList;
+
 public class SettingsTest {
 
 	/**
@@ -13,10 +15,18 @@ public class SettingsTest {
 		System.out.println(set.lastL_SBML);
 		
 		SettingsFactory sFactory = new SettingsFactory();
-		sFactory.add("Test","Tester");
-		System.out.println(sFactory.toString());
-		sFactory.writeMethod1();
+		//sFactory.add("Test","Tester");
+		//System.out.println(sFactory.toString());
+		//sFactory.writeMethod1();
 		
+		System.out.println("Current Paths:");
+		
+		ArrayList<String> paths = sFactory.Gurobi.getPaths();
+		
+		
+		for (String path : paths) {
+			System.out.println(path);
+		}
 	}
 
 }

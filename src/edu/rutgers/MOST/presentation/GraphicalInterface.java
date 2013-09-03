@@ -1710,8 +1710,14 @@ public class GraphicalInterface extends JFrame {
 		JMenu optionsMenu = new JMenu("Options");
 		optionsMenu.setMnemonic(KeyEvent.VK_O);
 		
+		JMenu gurobiMenu = new JMenu("Gurobi");
+		
+		JMenuItem gurobiStatus = new JMenuItem("Status");
+		gurobiMenu.add(gurobiStatus);
+		
+		
 		JMenuItem setGurobiPath = new JMenuItem("Set Gurobi Path");
-		optionsMenu.add(setGurobiPath);
+		gurobiMenu.add(setGurobiPath);
 		setGurobiPath.setMnemonic(KeyEvent.VK_G);
 		setGurobiPath.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent a) {
@@ -1719,6 +1725,8 @@ public class GraphicalInterface extends JFrame {
 				getGurobiPathInterface().setVisible(true);
 			}    	     
 		});
+		
+		optionsMenu.add(gurobiMenu);
 		
 		menuBar.add(optionsMenu);
 		
@@ -9142,9 +9150,10 @@ public class GraphicalInterface extends JFrame {
 	// Gurobi path methods
 	/******************************************************************************/
 	
-	public static void loadGurobiPathInterface() {
+	public static void createGurobiPathInterface() {
 		GurobiPathInterface gpi = new GurobiPathInterface();
 		setGurobiPathInterface(gpi);
+		
 		gpi.setIconImages(icons);					
 		gpi.setSize(600, 150);
 		gpi.setResizable(false);
@@ -9167,7 +9176,12 @@ public class GraphicalInterface extends JFrame {
 				gpiCloseAction();	        	
 			}
 		});	
-		gpi.setVisible(true);
+	}
+	public static void loadGurobiPathInterface() {
+		createGurobiPathInterface();
+		
+		getGurobiPathInterface().setVisible(true);
+		
 		gurobiPathErrorShown = false;
 		openGurobiPathFilechooser = true;
 		gurobiFileChooserShown = false; 
@@ -9434,6 +9448,9 @@ public class GraphicalInterface extends JFrame {
 		gurobiPathFound = false;
 		hasGurobiPath = true;
 		String lastGurobi_path = curSettings.get("LastGurobi");
+		
+		createGurobiPathInterface();
+		
 		if (lastGurobi_path == null) {
 			openGurobiPathFilechooser = true;
 			loadGurobiPathInterface();
