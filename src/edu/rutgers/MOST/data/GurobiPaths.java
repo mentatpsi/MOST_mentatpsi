@@ -47,7 +47,7 @@ public class GurobiPaths {
 			  
 	}
 	
-	public ArrayList<String> getPaths() {
+	public ArrayList<String> toArrayList() {
 		return paths;
 	}
 	

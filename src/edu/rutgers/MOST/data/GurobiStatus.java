@@ -24,9 +24,9 @@ public class GurobiStatus {
 	
 	
 	public ArrayList<String> getPaths() {
-		return Paths.getPaths();
+		return Paths.toArrayList();
 	}
-		
+			
 	public void addGurobiJava(String path) {
 		
 	}
