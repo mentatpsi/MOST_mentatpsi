@@ -10,6 +10,8 @@ public class GurobiStatTest {
 		ArrayList<String> paths = gStat.getPaths();
 		String cur = System.getProperty("user.dir");
 		System.out.println(cur);
+		System.out.println(gStat.License.toString());
+		System.out.println(gStat.License.isActive());
 		//for (String path : paths) {
 			//System.out.println(path);
 		//}

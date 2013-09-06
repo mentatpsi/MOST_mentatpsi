@@ -11,9 +11,30 @@ public class GurobiStatus {
 	private Iterator<String> pathIter;
 	private String mostRecent;
 	private Map<String,String> mapping;
+	public GurobiLicense License;
 	
 	public GurobiStatus() {
 		this.possiblePaths();
+		this.License = new GurobiLicense();
+	}
+	
+	public String[] getDrives() {
+		
+	  File[] drives = File.listRoots();
+	  String[] drivesStr = new String[drives.length];
+	  for (int i = 0; i < drives.length; i++) {
+		   System.out.println("Drive :" + drives[i]);
+		   drivesStr[i] = drives[i].toString();
+		   File drive = new File(drives[i].toString());
+		   long totalDriSpace = drive.getTotalSpace();
+		   long freeSpace = drive.getFreeSpace();
+		   
+		   totalDriSpace = (totalDriSpace/1024/1024/1024); // Converting Bytes to GB
+		   freeSpace = (freeSpace/1024/1024/1024); // Converting Bytes to GB
+		   
+	  }
+	  return drivesStr;
+			  
 	}
 	
 	public ArrayList<String> getPaths() {
@@ -31,46 +52,7 @@ public class GurobiStatus {
 		}
 	}
 	
-	/*
-	private boolean isMoreRecent(String ver1, String ver2) {
-		int verStart = ver1.indexOf("i") + 1;
-		int i = 0;
-		int ver1L = ver1.length();
-		int ver2L = ver2.length();
-		int dif = Math.abs((ver1L - ver2L));
-		if (ver1L > ver2L) {
-			ver2 += String.format("%0" + dif + "d", 0);
-			
-		}
-		
-		if (ver1L < ver2L) {
-			ver1 += String.format("%0" + dif + "d", 0);
-		}
-		
-		while (((int) ver1.charAt(i)) == ((int) ver2.charAt(i)) && (i < ver1L)) {
-			i += 1;
-		}
-		
-		if ((int) ver1.charAt(i) > (int) ver2.charAt(i)) {
-			return true;
-		}
-		else {
-			return false;
-		}
-	}
 	
-	public void mostRecent() {
-		String curMRecent = paths.get(0);
-		int verStart = curMRecent.indexOf("i") + 1;
-		String curVer;
-		for (String path : paths) {
-			if (isMoreRecent(path,curMRecent)) {
-				curMRecent = path;
-			}
-			curVer = path.substring(verStart);
-		}
-	}
-	*/
 	
 	public void addGurobiJava(String path) {
 		
@@ -106,5 +88,50 @@ public class GurobiStatus {
 	}
 	
 	
+		
+	
+	
 }
 
+
+
+/*
+private boolean isMoreRecent(String ver1, String ver2) {
+	int verStart = ver1.indexOf("i") + 1;
+	int i = 0;
+	int ver1L = ver1.length();
+	int ver2L = ver2.length();
+	int dif = Math.abs((ver1L - ver2L));
+	if (ver1L > ver2L) {
+		ver2 += String.format("%0" + dif + "d", 0);
+		
+	}
+	
+	if (ver1L < ver2L) {
+		ver1 += String.format("%0" + dif + "d", 0);
+	}
+	
+	while (((int) ver1.charAt(i)) == ((int) ver2.charAt(i)) && (i < ver1L)) {
+		i += 1;
+	}
+	
+	if ((int) ver1.charAt(i) > (int) ver2.charAt(i)) {
+		return true;
+	}
+	else {
+		return false;
+	}
+}
+
+public void mostRecent() {
+	String curMRecent = paths.get(0);
+	int verStart = curMRecent.indexOf("i") + 1;
+	String curVer;
+	for (String path : paths) {
+		if (isMoreRecent(path,curMRecent)) {
+			curMRecent = path;
+		}
+		curVer = path.substring(verStart);
+	}
+}
+*/
