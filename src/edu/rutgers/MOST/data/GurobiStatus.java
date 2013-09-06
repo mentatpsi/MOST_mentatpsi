@@ -14,89 +14,25 @@ public class GurobiStatus {
 	private String mostRecent;
 	private Map<String,String> mapping;
 	public GurobiLicense License;
+	public GurobiPaths Paths;
 	
 	public GurobiStatus() {
 		this.paths = new ArrayList<String>();
-		this.possiblePaths();
+		this.Paths = new GurobiPaths();
 		this.License = new GurobiLicense();
 	}
 	
-	public ArrayList<String> getDrives() {
-		
-	  File[] drives = File.listRoots();
-	  ArrayList<String> drivesStr = new ArrayList<String>();
-	  int i, e;
-	  e = 0;
-	  for (i = 0; i < drives.length; i++) {
-		   
-		   
-		   File drive = new File(drives[i].toString());
-		   long totalDriSpace = drive.getTotalSpace();
-		   long freeSpace = drive.getFreeSpace();
-		   
-		   if (freeSpace > 0) {
-			   
-			   drivesStr.add(drives[i].toString());
-			   //System.out.println("Drive :" + drivesStr.get(e));
-			   e++;
-		   }
-		   
-		   totalDriSpace = (totalDriSpace/1024/1024/1024); // Converting Bytes to GB
-		   freeSpace = (freeSpace/1024/1024/1024); // Converting Bytes to GB
-		   
-	  }
-	  return drivesStr;
-			  
-	}
 	
 	public ArrayList<String> getPaths() {
-		return paths;
+		return Paths.getPaths();
 	}
-	
-	public String getNext() {
-		if (pathIter.hasNext()) {
-			String cur = (String) pathIter.next();
-			return cur;
-		}
 		
-		else {
-			return null;
-		}
-	}
-	
-	
-	
 	public void addGurobiJava(String path) {
 		
 	}
 	
 	public void addGurobiJava() {
 		
-	}
-	
-	
-	private void possiblePaths() {	
-		ArrayList<String> drives = this.getDrives();
-		
-		for (String drive : drives) {
-			String path = drive;
-		    //String files;
-		    ArrayList<String> paths = new ArrayList<String>();
-		    //System.out.println(path);
-		    File folder = new File(path);
-		    
-		    File[] listOfFiles = folder.listFiles(new FilenameFilter() {
-		        public boolean accept(File directory, String fileName) {
-		            return fileName.startsWith("gurobi") && directory.isDirectory();
-		        } 
-		        }
-		    );
-		    
-		    for (File file : listOfFiles) {
-		    	this.paths.add(file.getAbsolutePath());
-		    }
-		    
-		}
 	}
 	
 	
