@@ -17,12 +17,17 @@ public class GurobiLicense {
 	
 	public GurobiLicense() {
 		status = new HashMap<String,String>();
+		keys = new ArrayList<String>();
+		
 		this.find();
 		try {
 			this.read();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			String curName = System.getProperty("user.name");
+			String cPath = "C:\\Users\\" + curName + "\\gurobi.lic";
+			
+			System.out.println("License could not be found in " + cPath);
 		}
 	}
 	
@@ -97,6 +102,10 @@ public class GurobiLicense {
 	}
 	
 	public boolean isActive() {
+		if (path == null) {
+			return false;
+		}
+		
 		String expDate = this.getExpiration();
 		
 		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
@@ -152,7 +161,6 @@ public class GurobiLicense {
 	private void read() throws Exception{
 		File file = new File(path);
 		Scanner input = new Scanner(file);
-		keys = new ArrayList<String>();
 		
 		
 		while(input.hasNextLine()) {
