@@ -20,6 +20,16 @@ public class GurobiLicense {
 		keys = new ArrayList<String>();
 		
 		this.find();
+		this.parse();
+	}
+	
+	public GurobiLicense(String loc) {
+		status = new HashMap<String,String>();
+		this.path = loc;
+		this.parse();
+	}
+	
+	public void parse() {
 		try {
 			this.read();
 		} catch (Exception e) {
@@ -31,15 +41,8 @@ public class GurobiLicense {
 		}
 	}
 	
-	public GurobiLicense(String loc) {
-		status = new HashMap<String,String>();
-		this.path = loc;
-		try {
-			this.read();
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+	public void setPath(String curPath) {
+		path = curPath;
 	}
 	
 	public String get(String key) {
