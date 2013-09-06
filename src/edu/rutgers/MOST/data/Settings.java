@@ -34,6 +34,10 @@ public class Settings {
 	public Settings() {
 		mappings = new Map();
 		try {
+			File f = new File("settings.xml");
+			if (f.exists()) {
+				
+			}
 			this.read();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

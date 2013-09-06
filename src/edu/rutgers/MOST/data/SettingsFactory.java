@@ -43,6 +43,7 @@ public class SettingsFactory {
 		mappings = new HashMap<String, String>();
 		this.filename = "settings.xml";
 		this.Gurobi = new GurobiStatus();
+		
 		this.read();
 	}
 	

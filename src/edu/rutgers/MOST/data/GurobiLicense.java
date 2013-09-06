@@ -64,8 +64,40 @@ public class GurobiLicense {
 				  
 	}
 	
+	public String getOrganization() {
+		return status.get("ORGANIZATION");
+	}
+	
+	public String getType() {
+		return status.get("TYPE");
+	}
+	
+	public String getHostName() {
+		return status.get("HOSTNAME");
+	}
+	
+	public String getHostID() {
+		return status.get("HOSTID");
+	}
+	
+	public String getUserName() {
+		return status.get("USERNAME");
+	}
+	
+	public String getExpiration() {
+		return status.get("EXPIRATION");
+	}
+	
+	public String getVersion() {
+		return status.get("VERSION");
+	}
+	
+	public String getKey() {
+		return status.get("KEY");
+	}
+	
 	public boolean isActive() {
-		String expDate = status.get("EXPIRATION");
+		String expDate = this.getExpiration();
 		
 		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 		Calendar cal = Calendar.getInstance();
