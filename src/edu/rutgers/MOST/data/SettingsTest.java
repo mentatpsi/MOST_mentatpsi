@@ -19,14 +19,17 @@ public class SettingsTest {
 		//System.out.println(sFactory.toString());
 		//sFactory.writeMethod1();
 		
-		System.out.println("Current Paths:");
+		//System.out.println("Current Paths:");
 		
-		ArrayList<String> paths = sFactory.Gurobi.getPaths();
+		//ArrayList<String> paths = sFactory.Gurobi.getPaths();
 		
 		
-		for (String path : paths) {
-			System.out.println(path);
-		}
+		//for (String path : paths) {
+			//System.out.println(path);
+		//}
+		
+		System.out.println(sFactory.Gurobi.License.toString());
+		System.out.println(sFactory.Gurobi.License.isActive());
 	}
 
 }
